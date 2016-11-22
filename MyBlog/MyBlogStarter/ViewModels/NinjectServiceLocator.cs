@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using MyBlogStarter.Repositories;
+using Ninject;
 
 namespace MyBlogStarter.ViewModels
 {
     public class NinjectServiceLocator
     {
-        public MainViewModel Main
+        private IKernel Kernel { get; set; }
+        public NinjectServiceLocator()
         {
-            get
-            {
-                throw new NotImplementedException("Je moet de klasse NinjectServiceLocator nog afmaken");
-            }
+            Kernel = new StandardKernel();
+
+            Kernel.Bind<IBlogRepository>().To<DummyBlogRepository>();
+
         }
+        public MainViewModel Main => Kernel.Get<MainViewModel>();
     }
 }

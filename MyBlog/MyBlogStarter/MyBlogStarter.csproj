@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -53,6 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Lib\RelayCommand.cs" />
+    <Compile Include="Repositories\DummyBlogRepository.cs" />
+    <Compile Include="Repositories\IBlogRepository.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\NinjectServiceLocator.cs" />
     <Page Include="MainWindow.xaml">
@@ -86,6 +93,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyBlogStarter.Domain\MyBlogStarter.Domain.csproj">
+      <Project>{0B0DD1F8-7831-4D24-99F7-5F3EC66B1B2F}</Project>
+      <Name>MyBlogStarter.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
